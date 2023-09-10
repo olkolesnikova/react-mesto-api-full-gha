@@ -1,0 +1,21 @@
+.element__description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 15px 31px 21px;
+    width: 246px;    
+}
+
+@media screen and (max-width: 1023px) {
+    
+    .element__description {
+       width: 90%;        
+    }
+}
+
+@media screen and (max-width: 767px) {
+    
+    .element__description {
+       width: 85%;        
+    }
+}

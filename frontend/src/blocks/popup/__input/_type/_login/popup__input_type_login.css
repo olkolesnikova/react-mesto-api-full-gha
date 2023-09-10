@@ -1,0 +1,12 @@
+.popup__input_type_login {
+
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 30px;
+    background-color: black;
+    color: white;
+
+}
+
+.popup__input_type_login:last-of-type {
+    margin-bottom: 0;
+}
