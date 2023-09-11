@@ -45,7 +45,7 @@ function App() {
                     name: currentUser.name,
                     description: currentUser.about,
                     avatar: currentUser.avatar,
-                    id: currentUser._id
+                    id: currentUser.id
                 })
             })
 
@@ -134,6 +134,7 @@ function App() {
     function handleCardLike(card) {
 
         const isLiked = card.likes.some((i) => i._id === currentUser.id);
+        console.log(currentUser.id);
 
         if (!isLiked) {
             api.addLike(card._id)
@@ -218,19 +219,17 @@ function App() {
     const tokenCheck = () => {
 
         const jwt = Cookies.get('jwt');
-        console.log(jwt);
-        
+
         if (jwt) {
             auth.getContent(jwt)
                 .then((data) => {
 
                     setLoggedIn(true);
-                    setUserEmail(data.data.email);
+                    setUserEmail(data.email);
                     navigate('/');
 
                 })
                 .catch(console.error)
-                console.log(Cookies.get('jwt'));
         }
 
     }
@@ -275,11 +274,9 @@ function App() {
 
     function handleSignOut() {
 
-        localStorage.remove('jwt');
+        //localStorage.remove('jwt');
         setUserEmail('');
     }
-
-
 
     return (
 
@@ -291,7 +288,7 @@ function App() {
 
                     <Route path="/signin" element={<Login onLogin={handleLogin} />} />
                     <Route path="/signup" element={<Register onLogin={handleRegister} />} />
-                    <Route path="/signout" element={<Login onLogin={handleSignOut} />}></Route>
+                    <Route path="/signout" element={<Login onLogin={handleSignOut} />} />
                     <Route path="/" element={
                         <ProtectedRoute loggedIn={loggedIn}>
 

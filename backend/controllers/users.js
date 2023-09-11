@@ -123,8 +123,6 @@ const login = (req, res, next) => {
           }
           const token = jwt.sign({ _id: user._id }, 'secret-code');
           res.cookie('jwt', token);
-          console.log('back', token);
-          console.log('req login', req.headers.cookie);
           return res.send({ token });
         });
     })
@@ -134,8 +132,6 @@ const login = (req, res, next) => {
 const getUserInfo = (req, res, next) => {
   return User.findById({ _id: req.user._id })
     .then((user) => {
-      console.log(user);
-      console.log(req.headers);
       if (!user) {
         throw new NotFoundError('Такого пользователя не существует');
       }

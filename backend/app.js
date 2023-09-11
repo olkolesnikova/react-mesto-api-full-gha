@@ -1,11 +1,8 @@
 const express = require('express');
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 const mongoose = require('mongoose');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const helmet = require('helmet');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const cookieParser = require('cookie-parser');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const cors = require('cors');
 const { errors } = require('celebrate');
 const userRouter = require('./routes/users');

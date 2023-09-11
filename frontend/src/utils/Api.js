@@ -14,12 +14,12 @@ class Api {
 
     getCards() {
 
-        return this.request(`${this.url}/cards`, { headers: this.headers })
+        return this.request(`${this.url}/cards`, { headers: this.headers, credentials: 'include' })
     }
 
     getUserInfo() {
 
-        return this.request(`${this.url}/users/me`, { headers: this.headers })
+        return this.request(`${this.url}/users/me`, { headers: this.headers, credentials: 'include' })
 
     }
 
@@ -33,7 +33,8 @@ class Api {
                 name: data.name,
                 about: data.description,
                 avatar: data.avatar
-            })
+            }),
+            credentials: 'include'
         })
     }
 
@@ -46,18 +47,18 @@ class Api {
             body: JSON.stringify({
                 name: data.name,
                 link: data.link
-            })
+            }),
+            credentials: 'include'
         })
     }
-
-
 
     deleteCard(cardId) {
 
         return this.request(`${this.url}/cards/${cardId}`, {
 
             method: 'DELETE',
-            headers: this.headers
+            headers: this.headers,
+            credentials: 'include'
         })
     }
 
@@ -66,7 +67,8 @@ class Api {
         return this.request(`${this.url}/cards/${cardId}/likes`, {
 
             method: 'PUT',
-            headers: this.headers
+            headers: this.headers,
+            credentials: 'include'
         })
 
     }
@@ -76,7 +78,8 @@ class Api {
         return this.request(`${this.url}/cards/${cardId}/likes`, {
 
             method: 'DELETE',
-            headers: this.headers
+            headers: this.headers,
+            credentials: 'include'
         })
     }
 
@@ -88,7 +91,8 @@ class Api {
             headers: this.headers,
             body: JSON.stringify({
                 avatar: avatar.avatar
-            })
+            }),
+            credentials: 'include'
         })
     }
 

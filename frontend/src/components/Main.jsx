@@ -14,7 +14,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike
             <Header>
                 <div className="header__container">
                     <p className="header__email">{userEmail}</p>
-                    <Link to='/signout' onClick={onSignOut} className="header__link">Выйти</Link>
+                    <Link to='/signin' onClick={onSignOut} className="header__link">Выйти</Link>
 
                 </div>
             </Header>
