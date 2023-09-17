@@ -1,5 +1,4 @@
 import headerLogo from '../images/header_logo.png';
-import { useLocation } from 'react-router-dom';
 
 const Header = ({children}) => {
 

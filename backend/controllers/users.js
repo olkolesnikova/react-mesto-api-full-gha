@@ -9,6 +9,8 @@ const InvalidDataError = require('../errors/invalid-data-error');
 const ExistingDataError = require('../errors/existing-data-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const User = require('../models/user');
 
 const getUsers = (req, res, next) => {
@@ -121,7 +123,10 @@ const login = (req, res, next) => {
           if (!matched) {
             throw new UnauthorizedError('Неверные данные');
           }
-          const token = jwt.sign({ _id: user._id }, 'secret-code');
+          const token = jwt.sign(
+            { _id: user._id },
+            NODE_ENV === 'production' ? JWT_SECRET : 'secret-code',
+          );
           res.cookie('jwt', token);
           return res.send({ token });
         });

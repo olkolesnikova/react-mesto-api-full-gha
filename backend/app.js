@@ -2,6 +2,7 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const { errors } = require('celebrate');
@@ -9,13 +10,14 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const NotFoundError = require('./errors/not-found-error');
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
+const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+
+mongoose.connect(DB_URL, {
   useNewUrlParser: true,
 }).then(() => {
   console.log('Connected to db');
 });
 const app = express();
-const { PORT = 3000 } = process.env;
 
 const corsOptions = {
   origin: 'http://localhost:3001',

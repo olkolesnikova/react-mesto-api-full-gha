@@ -107,7 +107,7 @@ class Api {
 }
 
 export const api = new Api({
-    url: 'http://localhost:3000',
+    url: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_URL : 'http://localhost:3000',
     headers: {
         //authorization: '71e140ff-2f6f-4fd2-8662-cbadd1dca0b9',
         'Content-type': 'application/json'

@@ -9,7 +9,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import ProtectedRoute from './ProtectedRoute';
@@ -40,18 +40,16 @@ function App() {
 
         api.getUserInfo()
             .then((currentUser) => {
-
+                console.log(currentUser);
                 setCurrentUser({
                     name: currentUser.name,
                     description: currentUser.about,
                     avatar: currentUser.avatar,
-                    id: currentUser.id
+                    id: currentUser._id
                 })
             })
-
             .catch(console.error)
-
-    }, [])
+    }, [loggedIn])
 
     useEffect(() => {
 
@@ -62,7 +60,7 @@ function App() {
 
             })
             .catch(console.error)
-    }, [])
+    }, [loggedIn])
 
 
 
@@ -133,9 +131,8 @@ function App() {
 
     function handleCardLike(card) {
 
-        const isLiked = card.likes.some((i) => i._id === currentUser.id);
-        console.log(currentUser.id);
-
+        const isLiked = card.likes.some((i) => i === currentUser.id);
+       console.log(isLiked);        
         if (!isLiked) {
             api.addLike(card._id)
                 .then((newCard) => {
@@ -274,8 +271,9 @@ function App() {
 
     function handleSignOut() {
 
-        //localStorage.remove('jwt');
+        Cookies.remove('jwt');
         setUserEmail('');
+        setLoggedIn(false);
     }
 
     return (
@@ -288,7 +286,7 @@ function App() {
 
                     <Route path="/signin" element={<Login onLogin={handleLogin} />} />
                     <Route path="/signup" element={<Register onLogin={handleRegister} />} />
-                    <Route path="/signout" element={<Login onLogin={handleSignOut} />} />
+                    
                     <Route path="/" element={
                         <ProtectedRoute loggedIn={loggedIn}>
 

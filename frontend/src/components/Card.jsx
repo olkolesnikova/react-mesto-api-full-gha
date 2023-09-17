@@ -5,11 +5,15 @@ export function Card({ card, onCardClick, onCardLike, onCardDelete }) {
 
     const currentUser = useContext(CurrentUserContext);
     const isOwner = card.owner === currentUser.id;
+    console.log(currentUser);
+    /* console.log('владелец', card.owner);
+    console.log('текущий пользователь', currentUser.id); */
     
-    const isLiked = card.likes.some(i => i._id === currentUser.id);
+    const isLiked = card.likes.some((i) => i === currentUser.id);
+    console.log(isLiked);
         
     const cardLikeButtonClassName = `element__button-like ${isLiked && 'element__button-like_type_active'}`;
-
+   
     const handleCardClick = () => {
         onCardClick(card);
     }
