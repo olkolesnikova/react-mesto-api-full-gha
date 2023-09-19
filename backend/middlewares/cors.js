@@ -3,6 +3,7 @@ const allowedCorsUrl = [
   'http://localhost:3000',
   'http://mesto-project.nomoredomainsrocks.ru',
   'https://mesto-project.nomoredomainsrocks.ru',
+  'https://api-mesto-project.nomoredomainsrocks.ru',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
