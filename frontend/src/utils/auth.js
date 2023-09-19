@@ -1,4 +1,4 @@
-export const url = 'http://localhost:3000';
+export const url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_URL : 'http://localhost:3000';
 
 export const register = ({ email, password }) => {
 
