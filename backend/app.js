@@ -7,7 +7,7 @@ const helmet = require('helmet');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const cors = require('cors');
+const cors = require('./middlewares/cors');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const NotFoundError = require('./errors/not-found-error');
@@ -21,7 +21,9 @@ mongoose.connect(DB_URL, {
 });
 const app = express();
 
-const corsOptions = {
+app.use(cors);
+
+/* const corsOptions = {
   origin: [
     'https://api.mesto-project.nomoredomainsrocks.ru',
     'https://mesto-project.nomoredomainsrocks.ru',
@@ -29,8 +31,8 @@ const corsOptions = {
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   credentials: true,
-};
-app.use(cors(corsOptions));
+}; */
+
 app.use(express.json());
 
 app.use(cookieParser());
