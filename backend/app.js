@@ -22,7 +22,7 @@ mongoose.connect(DB_URL, {
 const app = express();
 
 const corsOptions = {
-  origin: 'http://api.mesto-project.nomoredomainsrocks.ru',
+  origin: 'https://api.mesto-project.nomoredomainsrocks.ru',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   credentials: true,
