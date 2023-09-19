@@ -66,14 +66,7 @@ function App() {
 
     const isAnyPopupOpen = useMemo(() => {
         return isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || isImagePopupOpen || isInfoTooltipOpen
-    }, [
-        isEditProfilePopupOpen,
-        isAddPlacePopupOpen,
-        isEditProfilePopupOpen,
-        isImagePopupOpen,
-        isInfoTooltipOpen
-
-    ])
+    }, [isEditProfilePopupOpen, isAddPlacePopupOpen, isEditAvatarPopupOpen, isImagePopupOpen, isInfoTooltipOpen])
 
     useEffect(() => {
 
@@ -188,7 +181,7 @@ function App() {
 
     function handleAddPlaceSubmit(data) {
 
-        const newCard = api.addNewCard(data)
+        api.addNewCard(data)
 
             .then((newCard) => {
 
