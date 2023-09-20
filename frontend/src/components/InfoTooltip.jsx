@@ -11,7 +11,7 @@ export default function InfoTooltip({ isOpen, onClose, isSuccesRegistration }) {
         <section className={`popup ${isOpen && ' popup_opened'}`}>
             <div className="popup__container popup__container-login">
             <button type="button" className="popup__close" onClick={onClose} />
-                <img src={isSuccesRegistration ? resultImageSuccess : resultImage} className="popup__result-image"/>
+                <img alt="" src={isSuccesRegistration ? resultImageSuccess : resultImage} className="popup__result-image"/>
                 <p className="popup__result-registration">{isSuccesRegistration ? 'Вы успешно зарегистрировались' 
             : 'Что-то пошло не так! Попробуйте еще раз.'    
             }</p>

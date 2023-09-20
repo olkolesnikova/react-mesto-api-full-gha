@@ -203,7 +203,7 @@ function App() {
 
     useEffect(() => {
         tokenCheck();
-    }, [])
+    }, [loggedIn])
 
 
     const tokenCheck = () => {
