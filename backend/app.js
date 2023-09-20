@@ -28,6 +28,8 @@ const corsOptions = {
     'https://mesto-project.nomoredomainsrocks.ru',
     'http://localhost:3001',
     'http://localhost:3000',
+    'https://localhost:3001',
+    'https://localhost:3000',
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
@@ -43,6 +45,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(helmet());
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(userRouter);
 app.use(cardRouter);
