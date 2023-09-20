@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.164.40
+IP 84.201.164.40
 
 Frontend https://mesto-project.nomoredomainsrocks.ru
 
