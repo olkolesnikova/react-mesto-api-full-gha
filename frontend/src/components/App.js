@@ -33,12 +33,14 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [isSuccessRegistration, setIsSuccessRegistration] = useState(false);
     const [userEmail, setUserEmail] = useState('');
+    const [inited, setInited] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
 
-        api.getUserInfo()
+        if(loggedIn) {
+            api.getUserInfo()
             .then((currentUser) => {
                 console.log(currentUser);
                 setCurrentUser({
@@ -49,17 +51,19 @@ function App() {
                 })
             })
             .catch(console.error)
+        }
+        
     }, [loggedIn])
 
     useEffect(() => {
 
-        api.getCards()
+        if(loggedIn) {
+            api.getCards()
             .then((cards) => {
-
                 setCards(cards);
-
             })
             .catch(console.error)
+        }        
     }, [loggedIn])
 
 
@@ -225,16 +229,16 @@ function App() {
                 })
                 .catch(console.error)
                 .finally(() => {
-                    setLoggedIn(true)
+                    setInited(true)
                 })
         } else {
-            setLoggedIn(true)
+            setInited(true)
         }
     }
 
 
-    if(!loggedIn) {
-        return;
+    if(!inited) {
+        return null;
     }
     
     function handleRegister({ email, password }) {
