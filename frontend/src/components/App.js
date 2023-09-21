@@ -125,7 +125,7 @@ function App() {
     function handleCardLike(card) {
 
         const isLiked = card.likes.some((i) => i === currentUser.id);
-       console.log(isLiked);        
+        console.log(isLiked);
         if (!isLiked) {
             api.addLike(card._id)
                 .then((newCard) => {
@@ -202,8 +202,12 @@ function App() {
     }
 
     useEffect(() => {
+
+    })
+
+    useEffect(() => {
         tokenCheck();
-    }, [loggedIn])
+    }, [])
 
 
     const tokenCheck = () => {
@@ -221,7 +225,6 @@ function App() {
                 })
                 .catch(console.error)
         }
-
     }
 
     function handleRegister({ email, password }) {
@@ -279,7 +282,6 @@ function App() {
 
                     <Route path="/signin" element={<Login onLogin={handleLogin} />} />
                     <Route path="/signup" element={<Register onLogin={handleRegister} />} />
-                    
                     <Route path="/" element={
                         <ProtectedRoute loggedIn={loggedIn}>
 
