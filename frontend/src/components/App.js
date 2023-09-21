@@ -66,8 +66,6 @@ function App() {
         }        
     }, [loggedIn])
 
-
-
     const isAnyPopupOpen = useMemo(() => {
         return isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || isImagePopupOpen || isInfoTooltipOpen
     }, [isEditProfilePopupOpen, isAddPlacePopupOpen, isEditAvatarPopupOpen, isImagePopupOpen, isInfoTooltipOpen])
@@ -204,10 +202,6 @@ function App() {
             })
             .catch(console.error);
     }
-
-    useEffect(() => {
-
-    })
 
     useEffect(() => {
         tokenCheck();
