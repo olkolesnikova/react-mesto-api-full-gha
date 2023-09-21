@@ -127,7 +127,11 @@ const login = (req, res, next) => {
             { _id: user._id },
             NODE_ENV === 'production' ? JWT_SECRET : 'secret-code',
           );
-          res.cookie('jwt', token);
+          res.cookie('jwt', token, {
+            domain: '.mesto-project.nomoredomainsrocks.ru',
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? true : 'none',
+          });
           return res.send({ token });
         });
     })

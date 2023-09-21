@@ -215,7 +215,7 @@ function App() {
         const jwt = Cookies.get('jwt');
 
         if (jwt) {
-            auth.getContent(jwt)
+            auth.getContent()
                 .then((data) => {
 
                     setLoggedIn(true);
@@ -224,9 +224,19 @@ function App() {
 
                 })
                 .catch(console.error)
+                .finally(() => {
+                    setLoggedIn(true)
+                })
+        } else {
+            setLoggedIn(true)
         }
     }
 
+
+    if(!loggedIn) {
+        return;
+    }
+    
     function handleRegister({ email, password }) {
 
         auth.register({ email, password })
