@@ -128,6 +128,7 @@ const login = (req, res, next) => {
             NODE_ENV === 'production' ? JWT_SECRET : 'secret-code',
           );
           res.cookie('jwt', token, {
+            maxAge: 600000,
             // domain: '.mesto-project.nomoredomainsrocks.ru',
             // secure: process.env.NODE_ENV === 'production',
             // sameSite: process.env.NODE_ENV === 'production' ? true : 'none',
